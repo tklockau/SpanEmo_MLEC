@@ -48,7 +48,7 @@ now = datetime.datetime.now()
 filename = now.strftime("%Y-%m-%d-%H:%M:%S")
 fw = open('/content/SpanEmo_MLEC/configs/' + filename + '.json', 'a')
 model_path = filename + '.pt'
-args['--checkpoint-path'] = model_path
+'/content/SpanEmo_MLEC/models' = model_path
 json.dump(args, fw, sort_keys=True, indent=2)
 #####################################################################
 # Define Dataloaders
