@@ -46,7 +46,7 @@ else:
 #####################################################################
 now = datetime.datetime.now()
 filename = now.strftime("%Y-%m-%d-%H:%M:%S")
-fw = open('configs/' + filename + '.json', 'a')
+fw = open('/content/SpanEmo_MLEC/configs/' + filename + '.json', 'a')
 model_path = filename + '.pt'
 args['--checkpoint-path'] = model_path
 json.dump(args, fw, sort_keys=True, indent=2)
