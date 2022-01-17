@@ -22,7 +22,7 @@ ap = argparse.ArgumentParser()
 ap.add_argument('--model-path', type=str)
 ap.add_argument('--max-length', type=int, default=128)
 ap.add_argument('--seed', type=int, default=0)
-ap.add_argument('--test-batch-size', type=int, default=32)
+ap.add_argument('--test-batch-size', type=int, default=1)
 ap.add_argument('--lang', type=str, default='English')
 ap.add_argument('--test-path', type=str)
 
