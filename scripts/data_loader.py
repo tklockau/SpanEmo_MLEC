@@ -5,6 +5,7 @@ import torch
 import pandas as pd
 from ekphrasis.classes.tokenizer import SocialTokenizer
 from ekphrasis.classes.preprocessor import TextPreProcessor
+import numpy as np
 
 
 def twitter_preprocessor():
@@ -27,7 +28,7 @@ class DataClass(Dataset):
         self.args = args
         self.filename = filename
         self.max_length = int(args['--max-length'])
-        self.data, self.labels = self.load_dataset()
+        self.data, self.labels, self.ids = self.load_dataset() #CHANGES self.data, self.labels = self.load_dataset()
 
         if args['--lang'] == 'English':
             self.bert_tokeniser = BertTokenizer.from_pretrained('bert-base-uncased', do_lower_case=True)
@@ -44,7 +45,7 @@ class DataClass(Dataset):
         """
         df = pd.read_csv(self.filename, sep='\t')
         x_train, y_train = df.Tweet.values, df.iloc[:, 2:].values
-        return x_train, y_train
+        return x_train, y_train, df.ID.values #CHANGES return x_train, y_train
 
     def process_data(self):
         desc = "PreProcessing dataset {}...".format('')
@@ -92,6 +93,11 @@ class DataClass(Dataset):
         labels = self.labels[index]
         label_idxs = self.label_indices[index]
         length = self.lengths[index]
+        #CHANGES
+        if 'NONE' in labels:
+          labels = np.zeros((len(labels)))
+          print(self.ids[index])
+        #/CHANGES
         return inputs, labels, length, label_idxs
 
     def __len__(self):
