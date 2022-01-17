@@ -57,5 +57,5 @@ print('The number of Test batches: ', len(test_data_loader))
 # Run the model on a Test set
 #############################################################################
 model = SpanEmo(lang=args['--lang'])
-learn = EvaluateOnTest(model, test_data_loader, model_path='models/' + args['--model-path'])
+learn = EvaluateOnTest(model, test_data_loader, model_path=args['--model-path'])
 learn.predict(device=device)
