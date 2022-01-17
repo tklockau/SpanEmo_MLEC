@@ -203,6 +203,9 @@ class EvaluateOnTest(object):
             for step, batch in enumerate(progress_bar(self.test_data_loader, parent=pbar, leave=(pbar is not None))):
                 _, num_rows, y_pred, targets = self.model(batch, device)
                 current_index = index_dict
+                #CHANGES
+                print(y_pred)
+                #/CHANGES
                 preds_dict['y_true'][current_index: current_index + num_rows, :] = targets
                 preds_dict['y_pred'][current_index: current_index + num_rows, :] = y_pred
                 index_dict += num_rows
