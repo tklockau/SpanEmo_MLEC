@@ -96,7 +96,7 @@ class DataClass(Dataset):
         #CHANGES
         if 'NONE' in labels:
           labels = np.zeros((len(labels)))
-          print(self.ids[index])
+        print(self.ids[index])
         #/CHANGES
         return inputs, labels, length, label_idxs
 
