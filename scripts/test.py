@@ -1,6 +1,6 @@
 """
 Usage:
-    main.py [options]
+    main.py [options] 
 Options:
     -h --help                         show this screen
     --model-path=<str>                path of the trained model
@@ -10,7 +10,6 @@ Options:
     --lang=<str>                      language choice [default: English]
     --test-path=<str>                 file path of the test set [default: ]
 """
-
 from learner import EvaluateOnTest
 from model import SpanEmo
 from data_loader import DataClass
