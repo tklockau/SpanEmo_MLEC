@@ -28,7 +28,7 @@ ap.add_argument('--test-path', type=str)
 
 args = ap.parse_args()
 args = {
-    '-model-path': args.model_path,
+    '--model-path': args.model_path,
     '--max-length': args.max_length,
     '--seed': args.seed,
     '--test-batch-size': args.test_batch_size,
