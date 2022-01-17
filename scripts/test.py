@@ -15,11 +15,27 @@ from model import SpanEmo
 from data_loader import DataClass
 from torch.utils.data import DataLoader
 import torch
-from docopt import docopt
+import argparse
 import numpy as np
 
+ap = argparse.ArgumentParser()
+ap.add_argument('--model-path', type=str)
+ap.add_argument('--max-length', type=int, default=128)
+ap.add_argument('--seed', type=int, default=0)
+ap.add_argument('--test-batch-size', type=int, default=32)
+ap.add_argument('--lang', type=str, default='English')
+ap.add_argument('--test-path', type=str)
 
-args = docopt(__doc__)
+args = ap.parse_args()
+args = {
+    '-model-path': args.model_path,
+    '--max-length': args.max_length,
+    '--seed': args.seed,
+    '--test-batch-size': args.test_batch_size,
+    '--lang': args.lang,
+    '--test-path': args.test_path
+}
+
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 if str(device) == 'cuda:0':
     print("Currently using GPU: {}".format(device))
